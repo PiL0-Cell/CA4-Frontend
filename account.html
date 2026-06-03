@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DrukFlix - Your Page Title</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Font Lato -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -27,6 +28,7 @@
         }
     </script>
 </head>
+
 <body class="bg-[#121212] text-white font-sans">
     <nav class="bg-black/95 backdrop-blur-sm border-b border-gray-800 fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
@@ -36,7 +38,7 @@
                     <img src="assets/Hero/logo.png" alt="Logo" class="h-8">
                     <span class="text-xl font-bold">DRUK<span class="text-red-600">FLIX</span></span>
                 </a>
-                
+
                 <!-- Navigation Links -->
                 <div class="hidden md:flex gap-6">
                     <a href="index.html" class="nav-link hover:text-red-500">Home</a>
@@ -44,29 +46,30 @@
                     <a href="about-us.html" class="nav-link hover:text-red-500">About</a>
                     <a href="faq.html" class="nav-link hover:text-red-500">FAQ</a>
                 </div>
-                
+
                 <!-- Search Bar -->
                 <div class="hidden md:block flex-1 max-w-md">
-                    <input type="text" id="searchInput" placeholder="Search movies..." 
-                           class="w-full bg-gray-900 border border-gray-700 rounded-lg py-2 px-4 text-white">
+                    <input type="text" id="searchInput" placeholder="Search movies..."
+                        class="w-full bg-gray-900 border border-gray-700 rounded-lg py-2 px-4 text-white">
                 </div>
-                
+
                 <!-- Login/Signup or User Menu -->
                 <div id="authButtons" class="flex gap-3">
                     <!-- JS will fill this -->
                 </div>
-                
+
                 <!-- Mobile Menu Button -->
                 <button id="mobileBtn" class="md:hidden text-white text-2xl">☰</button>
             </div>
-            
+
             <!-- Mobile Menu (hidden by default) -->
             <div id="mobileMenu" class="hidden md:hidden pb-4">
                 <a href="index.html" class="block py-2">Home</a>
                 <a href="movies.html" class="block py-2">Movies</a>
                 <a href="about-us.html" class="block py-2">About</a>
                 <a href="faq.html" class="block py-2">FAQ</a>
-                <input type="text" id="mobileSearch" placeholder="Search..." class="w-full bg-gray-900 border border-gray-700 rounded-lg py-2 px-4 mt-2">
+                <input type="text" id="mobileSearch" placeholder="Search..."
+                    class="w-full bg-gray-900 border border-gray-700 rounded-lg py-2 px-4 mt-2">
                 <div id="mobileAuth" class="mt-2"></div>
             </div>
         </div>
@@ -75,20 +78,21 @@
     <!-- YOUR PAGE CONTENT GOES HERE -->
     <!-- Header and footer will be added automatically by script.js -->
     <main class="max-w-4xl mx-auto px-4 py-12">
-        
+
         <div class="text-center mb-8">
             <div class="text-5xl mb-3">⚙️</div>
             <h1 class="text-3xl md:text-4xl font-bold">Account Settings</h1>
             <p class="text-gray-400 mt-2">Manage your account information</p>
         </div>
-        
+
         <div class="grid md:grid-cols-3 gap-6">
-            
+
             <!-- Sidebar -->
             <div class="md:col-span-1">
                 <div class="bg-[#1E1E1E] rounded-xl p-6 sticky top-20">
                     <div class="text-center mb-4">
-                        <div id="userAvatar" class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-3">
+                        <div id="userAvatar"
+                            class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-3">
                             U
                         </div>
                         <h3 id="displayUsername" class="font-semibold text-lg">Loading...</h3>
@@ -100,55 +104,57 @@
                         </div>
                     </div>
                     <!-- In the sidebar, add this before the Logout button -->
-<div class="border-t border-gray-700 pt-4 mt-2">
-    <a href="History.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition py-2">
-        <span>📺</span> Watch History
-    </a>
-</div>
-                    
+                    <div class="border-t border-gray-700 pt-4 mt-2">
+                        <a href="History.html"
+                            class="flex items-center gap-2 text-gray-400 hover:text-white transition py-2">
+                            <span>📺</span> Watch History
+                        </a>
+                    </div>
+
                     <!-- Logout Button -->
                     <div class="border-t border-gray-700 mt-4 pt-4">
-                        <button onclick="logout()" 
-                                class="w-full bg-gray-800 hover:bg-red-600 text-white font-semibold py-2 rounded-lg transition flex items-center justify-center gap-2">
+                        <button onclick="logout()"
+                            class="w-full bg-gray-800 hover:bg-red-600 text-white font-semibold py-2 rounded-lg transition flex items-center justify-center gap-2">
                             <span>🚪</span> Logout
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Main Content Area -->
             <div class="md:col-span-2 space-y-6">
-                
+
                 <!-- Change Username Section -->
                 <div class="bg-[#1E1E1E] rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl">👤</span>
                         <h2 class="text-xl font-bold">Change Username</h2>
                     </div>
-                    
+
                     <form id="usernameForm" class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium mb-2">Current Username</label>
-                            <input type="text" id="currentUsername" readonly 
-                                   class="w-full bg-[#2C2C2C] border border-gray-700 rounded-lg px-4 py-2 text-gray-400 cursor-not-allowed">
+                            <input type="text" id="currentUsername" readonly
+                                class="w-full bg-[#2C2C2C] border border-gray-700 rounded-lg px-4 py-2 text-gray-400 cursor-not-allowed">
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium mb-2">New Username</label>
-                            <input type="text" id="newUsername" 
-                                   class="w-full bg-[#2C2C2C] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition"
-                                   placeholder="Enter new username (letters only)" required>
+                            <input type="text" id="newUsername"
+                                class="w-full bg-[#2C2C2C] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 transition"
+                                placeholder="Enter new username (letters only)" required>
                             <p id="usernameError" class="text-red-500 text-xs mt-1 hidden"></p>
-                            <p class="text-xs text-gray-500 mt-1">Username can only contain letters (A-Z, a-z), minimum 3 characters</p>
+                            <p class="text-xs text-gray-500 mt-1">Username can only contain letters (A-Z, a-z), minimum
+                                3 characters</p>
                         </div>
-                        
-                        <button type="submit" 
-                                class="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg transition">
+
+                        <button type="submit"
+                            class="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg transition">
                             Update Username
                         </button>
                     </form>
                 </div>
-                
+
                 <!-- Account Info Section -->
                 <div class="bg-[#1E1E1E] rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-4">
@@ -158,23 +164,24 @@
                     <p class="text-gray-300 mb-2">Your email address cannot be changed.</p>
                     <p class="text-sm text-gray-400">Email: <span id="emailDisplay"></span></p>
                 </div>
-                
+
                 <!-- Danger Zone -->
                 <div class="bg-red-900/20 border border-red-800 rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl">⚠️</span>
                         <h2 class="text-xl font-bold text-red-400">Danger Zone</h2>
                     </div>
-                    <p class="text-gray-300 text-sm mb-4">Once you delete your account, all your data will be permanently removed.</p>
-                    <button id="deleteAccountBtn" 
-                            class="bg-transparent border border-red-600 text-red-500 hover:bg-red-600 hover:text-white font-semibold px-6 py-2 rounded-lg transition">
+                    <p class="text-gray-300 text-sm mb-4">Once you delete your account, all your data will be
+                        permanently removed.</p>
+                    <button id="deleteAccountBtn"
+                        class="bg-transparent border border-red-600 text-red-500 hover:bg-red-600 hover:text-white font-semibold px-6 py-2 rounded-lg transition">
                         Delete Account
                     </button>
                 </div>
-                
+
             </div>
         </div>
-        
+
     </main>
 
     <footer class="bg-black/50 border-t border-gray-800 mt-20">
@@ -217,7 +224,7 @@
     <script src="js/script.js"></script>
     <script>
         let currentUser = null;
-        
+
         function loadUserData() {
             const userData = localStorage.getItem('stream_user');
             if (!userData) {
@@ -225,9 +232,9 @@
                 window.location.href = 'login.html';
                 return;
             }
-            
+
             currentUser = JSON.parse(userData);
-            
+
             // Update UI with user data
             const initial = currentUser.username ? currentUser.username[0].toUpperCase() : 'U';
             document.getElementById('userAvatar').textContent = initial;
@@ -235,7 +242,7 @@
             document.getElementById('displayEmail').textContent = currentUser.email;
             document.getElementById('emailDisplay').textContent = currentUser.email;
             document.getElementById('currentUsername').value = currentUser.username;
-            
+
             // Format join date
             if (currentUser.joinDate) {
                 const date = new Date(currentUser.joinDate);
@@ -245,7 +252,7 @@
                 document.getElementById('joinDate').textContent = 'Unknown';
             }
         }
-        
+
         // Validate username (letters only, min 3 chars)
         function validateUsername(username) {
             const regex = /^[A-Za-z]+$/;
@@ -254,7 +261,7 @@
             if (username.length < 3) return 'Username must be at least 3 characters';
             return null;
         }
-        
+
         // Update username in localStorage
         function updateUsername(newUsername) {
             // Update stream_user
@@ -263,7 +270,7 @@
                 username: newUsername
             };
             localStorage.setItem('stream_user', JSON.stringify(updatedUser));
-            
+
             // Update the stored user by email as well
             const storedUser = localStorage.getItem(`user_${currentUser.email}`);
             if (storedUser) {
@@ -271,29 +278,29 @@
                 userData.username = newUsername;
                 localStorage.setItem(`user_${currentUser.email}`, JSON.stringify(userData));
             }
-            
+
             // Update current user
             currentUser = updatedUser;
-            
+
             return true;
         }
-        
+
         // Delete account
         function deleteAccount() {
             const confirmDelete = confirm('Are you sure you want to delete your account? This action cannot be undone.');
-            
+
             if (confirmDelete) {
                 const secondConfirm = confirm('WARNING: All your data will be permanently deleted. Type "DELETE" to confirm.');
-                
+
                 if (secondConfirm) {
                     const typeConfirm = prompt('Type "DELETE" to confirm account deletion:');
-                    
+
                     if (typeConfirm === 'DELETE') {
                         // Remove user from localStorage
                         localStorage.removeItem(`user_${currentUser.email}`);
                         localStorage.removeItem('stream_user');
                         localStorage.removeItem('stream_session');
-                        
+
                         alert('Your account has been deleted. We\'re sad to see you go!');
                         window.location.href = 'signup.html';
                     } else {
@@ -302,26 +309,26 @@
                 }
             }
         }
-        
+
         // Setup form submission
         function setupUsernameForm() {
             const form = document.getElementById('usernameForm');
             const newUsernameInput = document.getElementById('newUsername');
             const usernameError = document.getElementById('usernameError');
-            
-            form.addEventListener('submit', function(e) {
+
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 const newUsername = newUsernameInput.value.trim();
                 const error = validateUsername(newUsername);
-                
+
                 if (error) {
                     usernameError.textContent = error;
                     usernameError.classList.remove('hidden');
                     newUsernameInput.classList.add('border-red-500');
                     return;
                 }
-                
+
                 // Check if username is the same
                 if (newUsername === currentUser.username) {
                     usernameError.textContent = 'This is your current username';
@@ -329,45 +336,46 @@
                     newUsernameInput.classList.add('border-red-500');
                     return;
                 }
-                
+
                 // Update username
                 updateUsername(newUsername);
-                
+
                 // Show success message
                 alert(`Username updated successfully to "${newUsername}"!`);
-                
+
                 // Reload the page to reflect changes
                 location.reload();
             });
-            
+
             // Remove error on typing
-            newUsernameInput.addEventListener('input', function() {
+            newUsernameInput.addEventListener('input', function () {
                 usernameError.classList.add('hidden');
                 this.classList.remove('border-red-500');
             });
         }
-        
+
         // Setup delete account button
         function setupDeleteButton() {
             const deleteBtn = document.getElementById('deleteAccountBtn');
             deleteBtn.addEventListener('click', deleteAccount);
         }
-        
+
         // Check if user is logged in before loading
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Check if user is logged in
             const session = localStorage.getItem('stream_session');
             const user = localStorage.getItem('stream_user');
-            
+
             if (!session || !user) {
                 window.location.href = 'login.html';
                 return;
             }
-            
+
             loadUserData();
             setupUsernameForm();
             setupDeleteButton();
         });
     </script>
 </body>
+
 </html>

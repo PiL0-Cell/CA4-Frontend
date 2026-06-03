@@ -116,7 +116,7 @@ window.moviesDB = moviesDB;
 // SEARCH FUNCTION
 // ============================================
 
-window.performSearch = function(query) {
+window.performSearch = function (query) {
     if (query && query.trim()) {
         window.location.href = `search.html?q=${encodeURIComponent(query.trim())}`;
     }
@@ -126,17 +126,17 @@ window.performSearch = function(query) {
 function setupSearchListener() {
     const searchInput = document.getElementById('searchInput');
     const mobileSearch = document.getElementById('mobileSearch');
-    
+
     if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
+        searchInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 window.performSearch(this.value);
             }
         });
     }
-    
+
     if (mobileSearch) {
-        mobileSearch.addEventListener('keypress', function(e) {
+        mobileSearch.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 window.performSearch(this.value);
             }
@@ -151,13 +151,13 @@ function setupFeatures() {
     // Mobile menu toggle
     const mobileBtn = document.getElementById('mobileBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+
     if (mobileBtn && mobileMenu) {
-        mobileBtn.onclick = function() {
+        mobileBtn.onclick = function () {
             mobileMenu.classList.toggle('hidden');
         };
     }
-    
+
     // Setup search (only on Enter key)
     setupSearchListener();
 }
@@ -173,7 +173,7 @@ function waitForSearchInput() {
             setupRealTimeSearch();
         }
     }, 100);
-    
+
     // Stop checking after 5 seconds
     setTimeout(() => {
         clearInterval(checkInterval);
@@ -182,7 +182,7 @@ function waitForSearchInput() {
 // ============================================
 // LOGOUT FUNCTION
 // ============================================
-window.logout = function() {
+window.logout = function () {
     localStorage.removeItem('stream_session');
     localStorage.removeItem('stream_user');
     window.location.href = 'index.html';
@@ -197,14 +197,14 @@ const usernameInput = document.getElementById('username');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const confirmInput = document.getElementById('confirmPassword');
-        
-        // Error elements
+
+// Error elements
 const usernameError = document.getElementById('usernameError');
 const emailError = document.getElementById('emailError');
 const passwordError = document.getElementById('passwordError');
 const confirmError = document.getElementById('confirmError');
-        
-        // Password requirement elements
+
+// Password requirement elements
 const reqLength = document.getElementById('reqLength');
 const reqCapital = document.getElementById('reqCapital');
 const reqSpecial = document.getElementById('reqSpecial');
@@ -212,10 +212,10 @@ const reqSpecial = document.getElementById('reqSpecial');
 function checkLoginStatus() {
     const userData = localStorage.getItem('stream_user');
     const isLoggedIn = userData !== null;
-    
+
     const authContainer = document.getElementById('authButtons');
     const mobileAuthContainer = document.getElementById('mobileAuth');
-    
+
     if (isLoggedIn) {
         const user = JSON.parse(userData);
         const initial = user.username ? user.username[0].toUpperCase() : 'U';
@@ -227,7 +227,7 @@ function checkLoginStatus() {
                 </div>
             </div>
         `;
-        
+
         if (mobileAuthContainer) {
             mobileAuthContainer.innerHTML = `
                 <a href="profile.html" class="block py-2">Profile</a>
@@ -241,7 +241,7 @@ function checkLoginStatus() {
             <a href="login.html" class="hover:text-red-500">Login</a>
             <a href="signup.html" class="bg-red-600 px-4 py-2 rounded-lg hover:bg-red-700">Sign Up</a>
         `;
-        
+
         if (mobileAuthContainer) {
             mobileAuthContainer.innerHTML = `
                 <a href="login.html" class="block py-2">Login</a>
@@ -257,7 +257,7 @@ function checkLoginStatus() {
 function highlightCurrentPage() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
@@ -312,13 +312,13 @@ function hideModal() {
     }
 }
 
-window.showMovieModal = function(movieTitle) {
+window.showMovieModal = function (movieTitle) {
     const movie = moviesDB[movieTitle];
     if (!movie) {
         console.error('Movie not found:', movieTitle);
         return;
     }
-    
+
     const modal = document.getElementById('movieModal');
     const banner = document.getElementById('modalBanner');
     const thumbnail = document.getElementById('modalThumbnail');
@@ -327,9 +327,9 @@ window.showMovieModal = function(movieTitle) {
     const year = document.getElementById('modalYear');
     const duration = document.getElementById('modalDuration');
     const description = document.getElementById('modalDescription');
-    
+
     if (!modal) return;
-    
+
     banner.style.backgroundImage = `url('${movie.banner}')`;
     thumbnail.src = movie.icon;
     title.textContent = movieTitle;
@@ -337,28 +337,28 @@ window.showMovieModal = function(movieTitle) {
     year.textContent = movie.year;
     duration.textContent = movie.duration;
     description.textContent = movie.description;
-    
+
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 };
 
 function setupModal() {
     createModal();
-    
+
     const modal = document.getElementById('movieModal');
     const closeBtn = document.getElementById('modalCloseBtn');
     const playBtn = document.getElementById('modalPlayBtn');
-    
+
     if (closeBtn) {
         closeBtn.addEventListener('click', hideModal);
     }
-    
+
     if (playBtn) {
         playBtn.addEventListener('click', () => {
             console.log('Play button clicked - non-functional');
         });
     }
-    
+
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -366,7 +366,7 @@ function setupModal() {
             }
         });
     }
-    
+
     document.addEventListener('keydown', (e) => {
         const modalEl = document.getElementById('movieModal');
         if (e.key === 'Escape' && modalEl && modalEl.style.display === 'flex') {
@@ -379,9 +379,9 @@ function setupModal() {
 // ============================================
 // INITIALIZATION
 // ============================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const searchInputExists = document.getElementById('searchInput');
-    
+
     if (searchInputExists) {
         console.log('Search input exists already');
         setupFeatures();
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Wait for search input to appear (in case header is added by another script)
         waitForSearchInput();
     }
-    
+
     checkLoginStatus();
     highlightCurrentPage();
     setupFeatures();
