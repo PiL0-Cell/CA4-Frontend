@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DrukFlix - Your Page Title</title>
+    <title>DrukFlix - Movies</title>
+
+    <link rel="icon" type="image/png" href="assets/Hero/Logo.png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,7 +46,7 @@
                     <a href="index.html" class="nav-link hover:text-red-500">Home</a>
                     <a href="movies.html" class="nav-link hover:text-red-500">Movies</a>
                     <a href="about-us.html" class="nav-link hover:text-red-500">About</a>
-                    <a href="faq.html" class="nav-link hover:text-red-500">FAQ</a>
+                    <a href="FAQ.html" class="nav-link hover:text-red-500">FAQ</a>
                 </div>
 
                 <!-- Search Bar -->
@@ -67,7 +69,7 @@
                 <a href="index.html" class="block py-2">Home</a>
                 <a href="movies.html" class="block py-2">Movies</a>
                 <a href="about-us.html" class="block py-2">About</a>
-                <a href="faq.html" class="block py-2">FAQ</a>
+                <a href="FAQ.html" class="block py-2">FAQ</a>
                 <input type="text" id="mobileSearch" placeholder="Search..."
                     class="w-full bg-gray-900 border border-gray-700 rounded-lg py-2 px-4 mt-2">
                 <div id="mobileAuth" class="mt-2"></div>
@@ -91,7 +93,7 @@
             <!-- Genre Tags - Centered -->
             <div class="flex flex-wrap justify-center gap-3 mb-4">
                 <button data-filter="all"
-                    class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-red-600 text-white">All</button>
+                    class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-gray-700">All</button>
                 <button data-filter="Drama"
                     class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-gray-300 hover:bg-gray-700">Drama</button>
                 <button data-filter="Comedy"
@@ -138,7 +140,7 @@
                     <ul class="text-sm text-gray-400 space-y-1">
                         <li><a href="movies.html" class="hover:text-red-500">Movies</a></li>
                         <li><a href="about-us.html" class="hover:text-red-500">About</a></li>
-                        <li><a href="faq.html" class="hover:text-red-500">FAQ</a></li>
+                        <li><a href="FAQ.html" class="hover:text-red-500">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -164,7 +166,37 @@
     </footer>
     <!-- Script -->
     <script src="js/script.js"></script>
-    <script>let currentFilter = "all";
+    <script>
+        let currentFilter = "";
+
+        function getGenreFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('genre');
+        }
+
+        // On page load, check if there's a genre parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const genreFromURL = getGenreFromURL();
+
+            if (genreFromURL) {
+                // Find the matching filter button
+                const matchingButton = Array.from(document.querySelectorAll('.filter-btn'))
+                    .find(btn => btn.dataset.filter === genreFromURL);
+
+                if (matchingButton) {
+                    // Set the current filter to that genre
+                    currentFilter = genreFromURL;
+
+                    // Highlight the button
+                    matchingButton.classList.add('bg-red-600', 'text-white');
+
+                    // Filter and show only that genre
+                    filterMovies();
+                }
+            }else{
+                currentFilter = "all"
+            }
+        });
 
         // Function to filter movies based on selected tag
         function filterMovies() {
