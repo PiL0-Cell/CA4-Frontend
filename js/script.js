@@ -112,9 +112,7 @@ const moviesArray = Object.keys(moviesDB).map(title => ({
 window.moviesArray = moviesArray;
 window.moviesDB = moviesDB;
 
-// ============================================
 // SEARCH FUNCTION
-// ============================================
 
 window.performSearch = function (query) {
     if (query && query.trim()) {
@@ -162,23 +160,6 @@ function setupFeatures() {
     setupSearchListener();
 }
 
-// Make sure setupFeatures is called AFTER header is added
-// Also add a mutation observer to wait for search input if needed
-function waitForSearchInput() {
-    const checkInterval = setInterval(() => {
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            console.log('Search input found via interval');
-            clearInterval(checkInterval);
-            setupRealTimeSearch();
-        }
-    }, 100);
-
-    // Stop checking after 5 seconds
-    setTimeout(() => {
-        clearInterval(checkInterval);
-    }, 5000);
-}
 // ============================================
 // LOGOUT FUNCTION
 // ============================================

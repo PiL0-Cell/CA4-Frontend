@@ -1,4 +1,4 @@
-/* Just a smooth fade-in animation */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -20,9 +20,4 @@
 .modal.active {
     display: flex;
     animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
